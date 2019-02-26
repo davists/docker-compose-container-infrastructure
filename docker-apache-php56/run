@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+PHP_ERROR_REPORTING=${PHP_ERROR_REPORTING:-"E_ALL"}
+
+source /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND

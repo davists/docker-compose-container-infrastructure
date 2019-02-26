@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  elk_container:
+    build:
+      context: elk/
+    ports:
+    - "9200:9200"
+    - "9300:9300"
+    - "5044:5044"
+    - "5601:5601"
+    networks:
+    - elk
+
+  apm:
+    build:
+      context: apm-server/
+    ports:
+    - "8200:8200"
+    networks:
+    - elk
+    depends_on:
+    - elk_container
+
+networks:
+  elk:
+    driver: bridge

@@ -1,0 +1,13 @@
+version: "2"
+services:
+    web:
+        build: /code/app # specify the directory of the Dockerfile
+        ports:
+            - "3000:3000" #specify ports forewarding
+        links:
+            - database # link this service to the database service
+
+    database: # name of the third service
+        image: mongo # specify image to build container from
+        ports:
+            - "27017:27017" # specify port forewarding
